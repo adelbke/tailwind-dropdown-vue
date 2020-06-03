@@ -1,12 +1,12 @@
 <template>
 	<div
-		class="dropdown-btn"
+		class="relative inline-block"
 		@click="display=!display"
 		@mouseover="onhover(true)"
 		@mouseleave="onhover(false)"
 	>
 		<span :class="[btnClass]" v-text="btnText"></span>
-		<div class="dropdown-menu" :class="[{'block':display, 'hidden':!display},menuClass]">
+		<div class="absolute z-10 right-0" :class="[{'block':display, 'hidden':!display},menuClass]">
 			<slot name="menu">
 				<h2>hello</h2>
 			</slot>
@@ -49,10 +49,4 @@ export default {
 </script>
 
 <style>
-.dropdown-menu {
-	@apply absolute z-10 right-0;
-}
-.dropdown-btn {
-	@apply relative inline-block;
-}
 </style>
