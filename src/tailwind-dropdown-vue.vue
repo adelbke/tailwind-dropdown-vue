@@ -1,18 +1,17 @@
 <template>
-	<a
+	<div
 		class="relative inline-block"
 		@click="display=!display"
 		@mouseover="onhover(true)"
 		@mouseleave="onhover(false)"
-		:href="href"
 	>
-		<span :class="[btnClass]" v-text="btnText"></span>
+		<a v-if="to == ''" :href="href" :class="[btnClass]" v-text="btnText"></a>
+		<router-link class="clue" v-else :to="to" :href="href" :class="[btnClass]" v-text="btnText"></router-link>
 		<div class="absolute z-10 right-0" :class="[{'block':display, 'hidden':!display},menuClass]">
 			<slot name="menu">
-				<h2>hello</h2>
 			</slot>
 		</div>
-	</a>
+	</div>
 </template>
 
 <script>
@@ -32,13 +31,17 @@ export default {
 		},
 		btnText: {
 			type: String,
-			default:"testing text"
+			default:''
 		},
 		hover: {
 			type: Boolean,
 			default: false
 		},
-		href:String
+		href:String,
+		to:{
+			type:String,
+			default:''
+		}
 	},
 	methods: {
 		onhover: function (value) {
@@ -51,4 +54,9 @@ export default {
 </script>
 
 <style>
+@tailwind base;
+
+@tailwind components;
+
+@tailwind utilities;
 </style>

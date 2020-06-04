@@ -18,7 +18,8 @@
     "build:unpkg": "cross-env NODE_ENV=production rollup --config build/rollup.config.js --format iife"
   },
   "dependencies": {
-    "tailwindcss": "^1.4.6"
+    "tailwindcss": "^1.4.6",
+    "vue-router": "^3.3.2"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
