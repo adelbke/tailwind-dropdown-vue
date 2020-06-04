@@ -1,9 +1,10 @@
 <template>
-	<div
+	<a
 		class="relative inline-block"
 		@click="display=!display"
 		@mouseover="onhover(true)"
 		@mouseleave="onhover(false)"
+		:href="href"
 	>
 		<span :class="[btnClass]" v-text="btnText"></span>
 		<div class="absolute z-10 right-0" :class="[{'block':display, 'hidden':!display},menuClass]">
@@ -11,7 +12,7 @@
 				<h2>hello</h2>
 			</slot>
 		</div>
-	</div>
+	</a>
 </template>
 
 <script>
@@ -36,7 +37,8 @@ export default {
 		hover: {
 			type: Boolean,
 			default: false
-		}
+		},
+		href:String
 	},
 	methods: {
 		onhover: function (value) {
