@@ -14,7 +14,6 @@
 //
 //
 //
-//
 var script = {
   name: "TailwindDropdownVue",
   data: function data() {
@@ -31,13 +30,17 @@ var script = {
     },
     btnText: {
       type: String,
-      default: "testing text"
+      default: ''
     },
     hover: {
       type: Boolean,
       default: false
     },
-    href: String
+    href: String,
+    to: {
+      type: String,
+      default: ''
+    }
   },
   methods: {
     onhover: function onhover(value) {
@@ -119,6 +122,46 @@ var script = {
         }
     }
     return script;
+}function createInjectorSSR(context) {
+    if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
+        context = __VUE_SSR_CONTEXT__;
+    }
+    if (!context)
+        return () => { };
+    if (!('styles' in context)) {
+        context._styles = context._styles || {};
+        Object.defineProperty(context, 'styles', {
+            enumerable: true,
+            get: () => context._renderStyles(context._styles)
+        });
+        context._renderStyles = context._renderStyles || renderStyles;
+    }
+    return (id, style) => addStyle(id, style, context);
+}
+function addStyle(id, css, context) {
+    const group =  css.media || 'default' ;
+    const style = context._styles[group] || (context._styles[group] = { ids: [], css: '' });
+    if (!style.ids.includes(id)) {
+        style.media = css.media;
+        style.ids.push(id);
+        let code = css.source;
+        style.css += code + '\n';
+    }
+}
+function renderStyles(styles) {
+    let css = '';
+    for (const key in styles) {
+        const style = styles[key];
+        css +=
+            '<style data-vue-ssr-id="' +
+                Array.from(style.ids).join(' ') +
+                '"' +
+                (style.media ? ' media="' + style.media + '"' : '') +
+                '>' +
+                style.css +
+                '</style>';
+    }
+    return css;
 }/* script */
 var __vue_script__ = script;
 /* template */
@@ -130,11 +173,8 @@ var __vue_render__ = function __vue_render__() {
 
   var _c = _vm._self._c || _h;
 
-  return _c('a', {
+  return _c('div', {
     staticClass: "relative inline-block",
-    attrs: {
-      "href": _vm.href
-    },
     on: {
       "click": function click($event) {
         _vm.display = !_vm.display;
@@ -146,35 +186,39 @@ var __vue_render__ = function __vue_render__() {
         return _vm.onhover(false);
       }
     }
-  }, [_vm._ssrNode("<span" + _vm._ssrClass(null, [_vm.btnClass]) + ">" + _vm._ssrEscape(_vm._s(_vm.btnText)) + "</span> "), _vm._ssrNode("<div" + _vm._ssrClass("absolute z-10 right-0", [{
+  }, [_vm._ssrNode((_vm.to == '' ? "<a" + _vm._ssrAttr("href", _vm.href) + _vm._ssrClass(null, [_vm.btnClass]) + ">" + _vm._ssrEscape(_vm._s(_vm.btnText)) + "</a>" : "<router-link" + _vm._ssrAttr("to", _vm.to) + _vm._ssrAttr("href", _vm.href) + _vm._ssrClass("clue", [_vm.btnClass]) + ">" + _vm._ssrEscape(_vm._s(_vm.btnText)) + "</router-link>") + " "), _vm._ssrNode("<div" + _vm._ssrClass("absolute z-10 right-0", [{
     'block': _vm.display,
     'hidden': !_vm.display
-  }, _vm.menuClass]) + ">", "</div>", [_vm._t("menu", [_c('h2', [_vm._v("hello")])])], 2)], 2);
+  }, _vm.menuClass]) + ">", "</div>", [_vm._t("menu")], 2)], 2);
 };
 
 var __vue_staticRenderFns__ = [];
 /* style */
 
-var __vue_inject_styles__ = undefined;
+var __vue_inject_styles__ = function __vue_inject_styles__(inject) {
+  if (!inject) return;
+  inject("data-v-3c6e6802_0", {
+    source: "@tailwind base;@tailwind components;@tailwind utilities;",
+    map: undefined,
+    media: undefined
+  });
+};
 /* scoped */
+
 
 var __vue_scope_id__ = undefined;
 /* module identifier */
 
-var __vue_module_identifier__ = "data-v-3cceaf7a";
+var __vue_module_identifier__ = "data-v-3c6e6802";
 /* functional template */
 
 var __vue_is_functional_template__ = false;
-/* style inject */
-
-/* style inject SSR */
-
 /* style inject shadow dom */
 
 var __vue_component__ = /*#__PURE__*/normalizeComponent({
   render: __vue_render__,
   staticRenderFns: __vue_staticRenderFns__
-}, __vue_inject_styles__, __vue_script__, __vue_scope_id__, __vue_is_functional_template__, __vue_module_identifier__, false, undefined, undefined, undefined);// Import vue component
+}, __vue_inject_styles__, __vue_script__, __vue_scope_id__, __vue_is_functional_template__, __vue_module_identifier__, false, undefined, createInjectorSSR, undefined);// Import vue component
 
 var install = function installTailwindDropdownVue(Vue) {
   if (install.installed) return;

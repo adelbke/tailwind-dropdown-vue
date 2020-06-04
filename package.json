@@ -1,6 +1,6 @@
 {
   "name": "tailwind-dropdown-vue",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "a customizable vue dropdown button based on tailwindcss",
   "main": "dist/tailwind-dropdown-vue.ssr.js",
   "browser": "dist/tailwind-dropdown-vue.esm.js",
