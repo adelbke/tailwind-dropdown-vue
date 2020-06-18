@@ -4,16 +4,15 @@ an easy way to add dropdown buttons to your vue page
 ## Installation
 ---
 
-```
+```javascript
 npm install tailwind-dropdown-vue
 
 import TailwindDropdownVue from 'tailwind-dropdown-vue'
-
 ```
 
 ## Usage
 
-```
+```html
 <dropdown
 	btn-text=""
 	btn-class=""
