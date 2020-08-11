@@ -14,12 +14,10 @@ import TailwindDropdownVue from 'tailwind-dropdown-vue'
 
 ```html
 <dropdown
-	btn-text=""
-	btn-class=""
 	menu-class=""
-	to=""
-	href
 	hover
+	left
+	right
 >
 	<div slot="menu">
 	<!-- In here you place the html that will be displayed in the dropdown menu -->
@@ -28,10 +26,7 @@ import TailwindDropdownVue from 'tailwind-dropdown-vue'
 ```
 ### Component Reference
 
-* btn-text: contains the button's text
-* btn-class: contains the button's class
 * menu-class: the "menu" slot wrapper classes
-* to: the vue-router link that the dropdown button leads to (*this will only work with the hover attribute*)
-
-* href: an alternative to the "to" attribute if the link isn't a vue-router link
 * hover:the presence of this attribute changes the button's behavior to display the dropdown menu when hovering over the button
+* left: align the dropdown menu to the left
+* right: align the dropdown menu to the right
