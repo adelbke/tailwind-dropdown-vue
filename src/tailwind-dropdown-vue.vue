@@ -1,13 +1,13 @@
 <template>
 	<div
-		class="relative lg:inline-block"
+		class="relative lg:inline-block cursor-pointer"
 		@click="display=!display"
 		@mouseover="onhover(true)"
 		@mouseleave="onhover(false)"
 	>
-		<a v-if="to == ''" :href="href" :class="[btnClass]" v-text="btnText"></a>
-		<router-link class="clue" v-else :to="to" :href="href" :class="[btnClass]" v-text="btnText"></router-link>
-		<div class="relative md:absolute z-10 right-0" :class="[{'block':display, 'hidden':!display},menuClass]">
+		<slot name="button"></slot>
+		<div class="relative md:absolute z-10 border-2 border-black"
+			:class="[{'block':display, 'hidden':!display},{'left-0':right && !left,'right-0':left},menuClass]">
 			<slot name="menu">
 			</slot>
 		</div>
@@ -26,22 +26,18 @@ export default {
 		menuClass: {
 			type: String
 		},
-		btnClass: {
-			type: String
-		},
-		btnText: {
-			type: String,
-			default:''
-		},
 		hover: {
 			type: Boolean,
 			default: false
 		},
-		href:String,
-		to:{
-			type:String,
-			default:''
-		}
+		left: {
+			type: Boolean,
+			default:false
+		},
+		right: {
+			type: Boolean,
+			default:true
+		},
 	},
 	methods: {
 		onhover: function (value) {
