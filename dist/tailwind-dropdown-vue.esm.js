@@ -25,21 +25,17 @@ var script = {
     menuClass: {
       type: String
     },
-    btnClass: {
-      type: String
-    },
-    btnText: {
-      type: String,
-      default: ''
-    },
     hover: {
       type: Boolean,
       default: false
     },
-    href: String,
-    to: {
-      type: String,
-      default: ''
+    left: {
+      type: Boolean,
+      default: false
+    },
+    right: {
+      type: Boolean,
+      default: true
     }
   },
   methods: {
@@ -191,7 +187,7 @@ var __vue_render__ = function () {
   var _c = _vm._self._c || _h;
 
   return _c('div', {
-    staticClass: "relative inline-block",
+    staticClass: "relative lg:inline-block cursor-pointer",
     on: {
       "click": function ($event) {
         _vm.display = !_vm.display;
@@ -203,31 +199,16 @@ var __vue_render__ = function () {
         return _vm.onhover(false);
       }
     }
-  }, [_vm.to == '' ? _c('a', {
-    class: [_vm.btnClass],
-    attrs: {
-      "href": _vm.href
-    },
-    domProps: {
-      "textContent": _vm._s(_vm.btnText)
-    }
-  }) : _c('router-link', {
-    staticClass: "clue",
-    class: [_vm.btnClass],
-    attrs: {
-      "to": _vm.to,
-      "href": _vm.href
-    },
-    domProps: {
-      "textContent": _vm._s(_vm.btnText)
-    }
-  }), _vm._v(" "), _c('div', {
-    staticClass: "absolute z-10 right-0",
+  }, [_vm._t("button"), _vm._v(" "), _c('div', {
+    staticClass: "relative md:absolute z-10 border-2 border-black",
     class: [{
       'block': _vm.display,
       'hidden': !_vm.display
+    }, {
+      'left-0': _vm.right && !_vm.left,
+      'right-0': _vm.left
     }, _vm.menuClass]
-  }, [_vm._t("menu")], 2)], 1);
+  }, [_vm._t("menu")], 2)], 2);
 };
 
 var __vue_staticRenderFns__ = [];
@@ -235,7 +216,7 @@ var __vue_staticRenderFns__ = [];
 
 const __vue_inject_styles__ = function (inject) {
   if (!inject) return;
-  inject("data-v-3c6e6802_0", {
+  inject("data-v-a47ccfd8_0", {
     source: "@tailwind base;@tailwind components;@tailwind utilities;",
     map: undefined,
     media: undefined

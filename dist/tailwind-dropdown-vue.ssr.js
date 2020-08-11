@@ -25,21 +25,17 @@ var script = {
     menuClass: {
       type: String
     },
-    btnClass: {
-      type: String
-    },
-    btnText: {
-      type: String,
-      default: ''
-    },
     hover: {
       type: Boolean,
       default: false
     },
-    href: String,
-    to: {
-      type: String,
-      default: ''
+    left: {
+      type: Boolean,
+      default: false
+    },
+    right: {
+      type: Boolean,
+      default: true
     }
   },
   methods: {
@@ -174,7 +170,7 @@ var __vue_render__ = function __vue_render__() {
   var _c = _vm._self._c || _h;
 
   return _c('div', {
-    staticClass: "relative inline-block",
+    staticClass: "relative lg:inline-block cursor-pointer",
     on: {
       "click": function click($event) {
         _vm.display = !_vm.display;
@@ -186,9 +182,12 @@ var __vue_render__ = function __vue_render__() {
         return _vm.onhover(false);
       }
     }
-  }, [_vm._ssrNode((_vm.to == '' ? "<a" + _vm._ssrAttr("href", _vm.href) + _vm._ssrClass(null, [_vm.btnClass]) + ">" + _vm._ssrEscape(_vm._s(_vm.btnText)) + "</a>" : "<router-link" + _vm._ssrAttr("to", _vm.to) + _vm._ssrAttr("href", _vm.href) + _vm._ssrClass("clue", [_vm.btnClass]) + ">" + _vm._ssrEscape(_vm._s(_vm.btnText)) + "</router-link>") + " "), _vm._ssrNode("<div" + _vm._ssrClass("absolute z-10 right-0", [{
+  }, [_vm._t("button"), _vm._ssrNode(" "), _vm._ssrNode("<div" + _vm._ssrClass("relative md:absolute z-10 border-2 border-black", [{
     'block': _vm.display,
     'hidden': !_vm.display
+  }, {
+    'left-0': _vm.right && !_vm.left,
+    'right-0': _vm.left
   }, _vm.menuClass]) + ">", "</div>", [_vm._t("menu")], 2)], 2);
 };
 
@@ -197,7 +196,7 @@ var __vue_staticRenderFns__ = [];
 
 var __vue_inject_styles__ = function __vue_inject_styles__(inject) {
   if (!inject) return;
-  inject("data-v-3c6e6802_0", {
+  inject("data-v-a47ccfd8_0", {
     source: "@tailwind base;@tailwind components;@tailwind utilities;",
     map: undefined,
     media: undefined
@@ -209,7 +208,7 @@ var __vue_inject_styles__ = function __vue_inject_styles__(inject) {
 var __vue_scope_id__ = undefined;
 /* module identifier */
 
-var __vue_module_identifier__ = "data-v-3c6e6802";
+var __vue_module_identifier__ = "data-v-a47ccfd8";
 /* functional template */
 
 var __vue_is_functional_template__ = false;
