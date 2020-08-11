@@ -6,7 +6,7 @@
 		@mouseleave="onhover(false)"
 	>
 		<slot name="button"></slot>
-		<div class="relative md:absolute z-10 border-2 border-black"
+		<div class="relative md:absolute z-10"
 			:class="[{'block':display, 'hidden':!display},{'left-0':right && !left,'right-0':left},menuClass]">
 			<slot name="menu">
 			</slot>
