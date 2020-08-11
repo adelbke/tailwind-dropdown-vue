@@ -200,7 +200,7 @@ var __vue_render__ = function () {
       }
     }
   }, [_vm._t("button"), _vm._v(" "), _c('div', {
-    staticClass: "relative md:absolute z-10 border-2 border-black",
+    staticClass: "relative md:absolute z-10",
     class: [{
       'block': _vm.display,
       'hidden': !_vm.display
@@ -216,7 +216,7 @@ var __vue_staticRenderFns__ = [];
 
 const __vue_inject_styles__ = function (inject) {
   if (!inject) return;
-  inject("data-v-a47ccfd8_0", {
+  inject("data-v-eb8d76be_0", {
     source: "@tailwind base;@tailwind components;@tailwind utilities;",
     map: undefined,
     media: undefined

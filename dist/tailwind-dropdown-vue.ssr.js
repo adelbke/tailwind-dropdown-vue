@@ -182,7 +182,7 @@ var __vue_render__ = function __vue_render__() {
         return _vm.onhover(false);
       }
     }
-  }, [_vm._t("button"), _vm._ssrNode(" "), _vm._ssrNode("<div" + _vm._ssrClass("relative md:absolute z-10 border-2 border-black", [{
+  }, [_vm._t("button"), _vm._ssrNode(" "), _vm._ssrNode("<div" + _vm._ssrClass("relative md:absolute z-10", [{
     'block': _vm.display,
     'hidden': !_vm.display
   }, {
@@ -196,7 +196,7 @@ var __vue_staticRenderFns__ = [];
 
 var __vue_inject_styles__ = function __vue_inject_styles__(inject) {
   if (!inject) return;
-  inject("data-v-a47ccfd8_0", {
+  inject("data-v-eb8d76be_0", {
     source: "@tailwind base;@tailwind components;@tailwind utilities;",
     map: undefined,
     media: undefined
@@ -208,7 +208,7 @@ var __vue_inject_styles__ = function __vue_inject_styles__(inject) {
 var __vue_scope_id__ = undefined;
 /* module identifier */
 
-var __vue_module_identifier__ = "data-v-a47ccfd8";
+var __vue_module_identifier__ = "data-v-eb8d76be";
 /* functional template */
 
 var __vue_is_functional_template__ = false;
