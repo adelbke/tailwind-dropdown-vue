@@ -1,6 +1,6 @@
 <template>
 	<div
-		class="relative lg:inline-block cursor-pointer"
+		class="relative cursor-pointer"
 		@click="display=!display"
 		@mouseover="onhover(true)"
 		@mouseleave="onhover(false)"

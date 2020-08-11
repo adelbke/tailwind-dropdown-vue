@@ -187,7 +187,7 @@ var __vue_render__ = function () {
   var _c = _vm._self._c || _h;
 
   return _c('div', {
-    staticClass: "relative lg:inline-block cursor-pointer",
+    staticClass: "relative cursor-pointer",
     on: {
       "click": function ($event) {
         _vm.display = !_vm.display;
@@ -216,7 +216,7 @@ var __vue_staticRenderFns__ = [];
 
 const __vue_inject_styles__ = function (inject) {
   if (!inject) return;
-  inject("data-v-eb8d76be_0", {
+  inject("data-v-0e8836c9_0", {
     source: "@tailwind base;@tailwind components;@tailwind utilities;",
     map: undefined,
     media: undefined
